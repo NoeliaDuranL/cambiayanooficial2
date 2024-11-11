@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal"
+    android:background="#F8F5FA">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir Producto"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para el Nombre del Producto -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/etProductName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="#F4EBF5"
+        android:hint="Nombre del producto"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botón para Añadir Imagen -->
+    <LinearLayout
+        android:id="@+id/imageContainer"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:background="#E0E0E0"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp"
+        android:onClick="selectImage">
+
+        <ImageView
+            android:id="@+id/selectedImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:contentDescription="Preview Image" />
+
+    </LinearLayout>
+
+
+    <!-- Campo para la URL de la Imagen -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL de la Imagen"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/etProductImageUrl"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="#F4EBF5"
+        android:hint="URL de la imagen (opcional)"
+        android:padding="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo de Descripción -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/etProductDescription"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:background="#F4EBF5"
+        android:hint="Descripción del producto"
+        android:padding="10dp"
+        android:gravity="top"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botón Publicar -->
+    <Button
+        android:id="@+id/btnPublishProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publicar"
+        android:backgroundTint="#D81B60"
+        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:minWidth="150dp"/>
+</LinearLayout>
+
