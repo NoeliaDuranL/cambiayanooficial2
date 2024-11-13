@@ -36,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         recyclerViewPublicaciones = findViewById(R.id.recyclerViewPublicaciones)
         recyclerViewPublicaciones.layoutManager = LinearLayoutManager(this)
 
+
+
+
         // Configurar BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
 
@@ -72,6 +75,9 @@ class MainActivity : AppCompatActivity() {
 
         // Llamar a la función para cargar publicaciones desde la API
         cargarPublicacionesDesdeApi()
+
+
+
     }
 
     private fun cargarPublicacionesDesdeApi() {
