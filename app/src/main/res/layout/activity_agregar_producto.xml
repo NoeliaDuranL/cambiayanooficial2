@@ -53,24 +53,6 @@
 
     </LinearLayout>
 
-
-    <!-- Campo para la URL de la Imagen -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="URL de la Imagen"
-        android:layout_marginBottom="8dp"
-        android:textColor="#000000" />
-
-    <EditText
-        android:id="@+id/etProductImageUrl"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:background="#F4EBF5"
-        android:hint="URL de la imagen (opcional)"
-        android:padding="10dp"
-        android:layout_marginBottom="16dp" />
-
     <!-- Campo de Descripción -->
     <TextView
         android:layout_width="wrap_content"

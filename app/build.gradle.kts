@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.google.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.okhttp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
