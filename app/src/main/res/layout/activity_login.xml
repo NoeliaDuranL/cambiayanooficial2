@@ -1,0 +1,84 @@
+<!-- activity_login.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#f5f5f5">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/circle_background"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
+
+    <!-- Contenedor principal -->
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@drawable/container_background"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Logo circular en la parte superior -->
+
+
+        <!-- Campo de usuario -->
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:hint="Usuario"
+            android:padding="10dp" />
+
+        <!-- Campo de contraseña -->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <!-- Botón de inicio de sesión -->
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#3F51B5"
+            android:text="Iniciar Sesión"
+            android:textColor="#FFFFFF" />
+
+        <!-- Botón de inicio de sesión con Google -->
+        <Button
+            android:id="@+id/google_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DB4437"
+            android:text="Iniciar sesión con Google"
+            android:textColor="#FFFFFF" />
+        <!-- TextView para ir a la pantalla de registro -->
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="¿No tienes cuenta? Regístrate"
+            android:textColor="#3F51B5"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

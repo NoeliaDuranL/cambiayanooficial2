@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">cambiayanooficial2</string>
+    <string name="onboarding_title_1">Bienvenido a la App</string>"
+    <string name="onboarding_description_1">Esta es una breve introducción\n a las características de la app.</string>
+    <string name="onboarding_title_2">Función 1</string>
+    <string name="onboarding_description_2">Aquí te mostramos cómo funciona \n la primera característica.</string>
+    <string name="onboarding_title_3">Función 2</string>
+    <string name="onboarding_description_3">La segunda función te \n permite hacer esto...</string>
+    <string name="next">Siguiente</string>
+    <string name="start">Iniciar</string>
+    <string name="client_id">337622076823-8o6249umrp5bn079p800uf4c735i6agl.apps.googleusercontent.com</string>
 </resources>

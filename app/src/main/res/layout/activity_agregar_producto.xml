@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F5FA">
+
+    <!-- Contenedor principal en vertical, alineado arriba del BottomNavigationView -->
+    <LinearLayout
+    android:id="@+id/mainContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center_horizontal"
-    android:background="#F8F5FA">
+    android:layout_above="@id/bottomNav">  <!-- Asegura que este layout esté encima del BottomNavigationView -->
 
     <!-- Título -->
     <TextView
@@ -50,7 +58,6 @@
             android:layout_height="100dp"
             android:src="@drawable/logo"
             android:contentDescription="Preview Image" />
-
     </LinearLayout>
 
     <!-- Campo de Descripción -->
@@ -81,5 +88,14 @@
         android:textColor="#FFFFFF"
         android:padding="10dp"
         android:minWidth="150dp"/>
-</LinearLayout>
+    </LinearLayout>
 
+    <!-- BottomNavigationView alineado al fondo -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+    app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.cambiayanooficial2
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -20,17 +22,46 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+        val username = sharedPref.getString("username", null)
+        val email = sharedPref.getString("email", null)
+        val fullName = sharedPref.getString("fullName", null)
+
+        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
+
+
         // Inicializa el RecyclerView y el adaptador
         recyclerViewPublicaciones = findViewById(R.id.recyclerViewPublicaciones)
         recyclerViewPublicaciones.layoutManager = LinearLayoutManager(this)
 
-        // Encuentra el ícono de agregar producto
-        addProductIcon = findViewById(R.id.addProductIcon)
+        // Configurar BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
 
-        // Configura el OnClickListener para el ícono de agregar producto
-        addProductIcon.setOnClickListener {
-            val intent = Intent(this, AgregarProductoActivity::class.java)
-            startActivity(intent)
+        // Configurar el listener para detectar los clics en los ítems del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_add_product -> {
+                    // Cuando se hace clic en el ícono de "Añadir Producto"
+                    val intent = Intent(this, AgregarProductoActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_home -> {
+                    // Lógica para la opción de "Home"
+                    true
+                }
+                R.id.nav_notifications -> {
+                    // Lógica para la opción de "Notificaciones"
+                    true
+                }
+                R.id.nav_chat -> {
+                    // Lógica para la opción de "Chat"
+                    true
+                }
+                else -> false
+            }
         }
 
         // Inicializa el adaptador con una lista vacía

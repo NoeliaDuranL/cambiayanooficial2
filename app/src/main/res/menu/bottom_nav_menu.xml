@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Ítem para el icono de inicio -->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <!-- Ítem para el icono de añadir producto -->
+    <item
+        android:id="@+id/nav_add_product"
+        android:icon="@drawable/ic_add"
+        android:title="Add Product" />
+
+    <!-- Ítem para el icono de notificaciones -->
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="Notifications" />
+
+    <!-- Ítem para el icono de chat -->
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="Chat" />
+</menu>

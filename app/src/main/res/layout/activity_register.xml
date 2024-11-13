@@ -1,0 +1,101 @@
+<!-- activity_register.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#f5f5f5">
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/circle_background"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" /> <!-- Reemplaza "logo" con el nombre de tu imagen -->
+
+    <!-- Contenedor principal -->
+    <LinearLayout
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="16dp"
+        android:background="@drawable/container_background"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center" />
+
+        <!-- Campo de usuario -->
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:hint="Nombre de Usuario"
+            android:padding="10dp" />
+
+        <!-- Campo de correo electrónico -->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <!-- Campo de contraseña -->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#CCCCCC"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <!-- Botón de registro -->
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#3F51B5"
+            android:text="Registrarse"
+            android:textColor="#FFFFFF" />
+
+        <!-- Botón de inicio de sesión con Google -->
+        <Button
+            android:id="@+id/google_register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#DB4437"
+            android:text="Registrarse con Google"
+            android:textColor="#FFFFFF" />
+        <!-- TextView para ir a la pantalla de registro -->
+        <TextView
+            android:id="@+id/login_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="#3F51B5"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

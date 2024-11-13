@@ -2,6 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 }
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.6.0")
+
+    }
+}
 
 android {
     namespace = "com.example.cambiayanooficial2"
@@ -9,8 +19,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.cambiayanooficial2"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = 28
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -33,6 +43,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,10 +59,14 @@ dependencies {
     implementation(libs.compiler)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation(libs.google.material)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.okhttp)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.core)
+    implementation(libs.play.services.auth)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.logging.interceptor)
+
 }

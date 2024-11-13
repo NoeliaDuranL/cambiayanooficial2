@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -50,6 +51,43 @@ class AgregarProductoActivity : AppCompatActivity() {
         btnPublishProduct.setOnClickListener {
             crearProducto() // Primero crea el producto
         }
+        // Configurar BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        // Configurar el listener para detectar los clics en los ítems del menú
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    // Navegar de regreso a MainActivity
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()  // Cerrar la actividad actual
+                    true
+                }
+                R.id.nav_add_product -> {
+                    // Ya estamos en AgregarProductoActivity, así que no hacemos nada
+                    true
+                }
+                R.id.nav_notifications -> {
+                    // Aquí puedes abrir una actividad de notificaciones
+//                    val intent = Intent(this, NotificacionesActivity::class.java)
+//                    startActivity(intent)
+                    true
+                }
+                R.id.nav_chat -> {
+                    // Aquí puedes abrir una actividad de chat
+//                    val intent = Intent(this, ChatActivity::class.java)
+//                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Opcional: Seleccionar el ícono de "Add Product" para que aparezca resaltado en esta actividad
+        bottomNavigationView.selectedItemId = R.id.nav_add_product
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

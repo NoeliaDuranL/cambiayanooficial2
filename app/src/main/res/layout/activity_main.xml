@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Barra superior con íconos de navegación -->
+    <!-- Barra superior con el logo y otros elementos -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -12,7 +15,7 @@
         android:padding="8dp"
         android:background="#F5F5F5">
 
-        <!-- Imagen de perfil -->
+        <!-- Imagen de perfil o logo -->
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="40dp"
@@ -28,44 +31,23 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Buscar"
-            android:padding="8dp"
-             />
-
-        <!-- Íconos de navegación -->
-        <ImageView
-            android:id="@+id/homeIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/home"
-            android:layout_marginStart="8dp"/>
-
-        <ImageView
-            android:id="@+id/addProductIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/plus"
-            android:layout_marginStart="8dp"/>
-
-        <ImageView
-            android:id="@+id/notificationIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/notification"
-            android:layout_marginStart="8dp"/>
-
-        <ImageView
-            android:id="@+id/chatIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/messages"
-            android:layout_marginStart="8dp"/>
+            android:padding="8dp" />
     </LinearLayout>
 
-    <!-- RecyclerView para mostrar publicaciones -->
+    <!-- RecyclerView para mostrar publicaciones (contenido principal) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPublicaciones"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topBar"
         android:padding="8dp" />
+
+    <!-- Barra de navegación inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>
