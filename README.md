@@ -17,6 +17,11 @@ y cambia por la ip de tu maquina fisica si estas ejecutando en un dispositivo mo
 **Ejemplo:  `http://<tu=ip>:8000/api/`**
 manten el puerto en :8000
 
+### Resultado ejemplo:
+
+```kotlin
+private const val BASE_URL = "http://192.168.X.X:8000/api/"
+```
 ### Para emuladores:
 
 Utiliza la IP `10.0.2.2` (que es la forma en que el emulador se conecta a tu máquina local), el puerto se mantiene
@@ -28,6 +33,11 @@ También necesitas actualizar la IP en el archivo de configuración de seguridad
 
 Abre el archivo y busca la siguiente línea:
 ```xml
-  <domain includeSubdomains="true">192.168.43.237</domain><!-- Reemplaza con la IP de tu servidor -->
+  <domain includeSubdomains="true">192.168.43.237</domain><!-- Reemplaza con la IP de tu maquina fisica -->
 ```
+> Ejecuta tu backend de la siguiente manera:
+```shell
+php artisan serve --host=0.0.0.0 --port=8000
+```
+
 
