@@ -1,11 +1,12 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.ui.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cambiayanooficial2.ui.LoginActivity
-import com.example.cambiayanooficial2.ui.RegisterActivity
+import com.example.cambiayanooficial2.R
+import com.example.cambiayanooficial2.ui.auth.LoginActivity
+import com.example.cambiayanooficial2.ui.auth.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity() {
 

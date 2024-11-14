@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.models
 
 data class Publicacion(
     val id: Int,
@@ -17,4 +17,11 @@ data class Producto(
 
 data class Usuario(
     val usuario: String
+)
+
+data class PostProductoRequest(
+    val nombreProducto: String,
+    val descripcionProducto: String,
+    val imagenProducto: String?, // URL de la imagen o null si no se proporciona
+    val descripcionPost: String
 )

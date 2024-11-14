@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2.ui
+package com.example.cambiayanooficial2.ui.auth
 
 import android.content.Context
 import android.content.Intent
@@ -10,11 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.cambiayanooficial2.MainActivity
+import com.example.cambiayanooficial2.ui.main.MainActivity
 import com.example.cambiayanooficial2.R
-import com.example.cambiayanooficial2.models.ApiResponse
+import com.example.cambiayanooficial2.models.response.ApiResponse
 import com.example.cambiayanooficial2.network.ApiClient
-import com.example.cambiayanooficial2.network.LoginRequest
+import com.example.cambiayanooficial2.models.request.LoginRequest
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.ui.product
 
 import android.app.Activity
 import android.content.Intent
@@ -11,6 +11,11 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.cambiayanooficial2.R
+import com.example.cambiayanooficial2.models.PostProductoRequest
+import com.example.cambiayanooficial2.models.response.UploadResponse
+import com.example.cambiayanooficial2.network.ApiClient
+import com.example.cambiayanooficial2.ui.main.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -70,14 +75,10 @@ class AgregarProductoActivity : AppCompatActivity() {
                 }
                 R.id.nav_notifications -> {
                     // Aquí puedes abrir una actividad de notificaciones
-//                    val intent = Intent(this, NotificacionesActivity::class.java)
-//                    startActivity(intent)
                     true
                 }
                 R.id.nav_chat -> {
                     // Aquí puedes abrir una actividad de chat
-//                    val intent = Intent(this, ChatActivity::class.java)
-//                    startActivity(intent)
                     true
                 }
                 else -> false
@@ -86,8 +87,6 @@ class AgregarProductoActivity : AppCompatActivity() {
 
         // Opcional: Seleccionar el ícono de "Add Product" para que aparezca resaltado en esta actividad
         bottomNavigationView.selectedItemId = R.id.nav_add_product
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -116,7 +115,7 @@ class AgregarProductoActivity : AppCompatActivity() {
                     descripcionPost = descripcion
                 )
 
-                val postResponse = RetrofitInstance.api.crearProductoYPost(productoRequest)
+                val postResponse = ApiClient.apiService.crearProductoYPost(productoRequest)
                 productoId = postResponse.id // Guarda el id_producto devuelto
                 Toast.makeText(this@AgregarProductoActivity, "Producto creado con éxito", Toast.LENGTH_SHORT).show()
 
@@ -138,7 +137,7 @@ class AgregarProductoActivity : AppCompatActivity() {
         // Crea un request body para el id_producto
         val productoIdBody = RequestBody.create("text/plain".toMediaTypeOrNull(), productoId.toString())
 
-        RetrofitInstance.api.uploadImage(body, productoIdBody).enqueue(object : Callback<UploadResponse> {
+        ApiClient.apiService.uploadImage(body, productoIdBody).enqueue(object : Callback<UploadResponse> {
             override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@AgregarProductoActivity, "Imagen subida exitosamente", Toast.LENGTH_SHORT).show()

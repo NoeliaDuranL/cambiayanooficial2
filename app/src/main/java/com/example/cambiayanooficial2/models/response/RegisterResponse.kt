@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2.models
+package com.example.cambiayanooficial2.models.response
 
 data class RegisterResponse(
     val success: Boolean,
