@@ -9,6 +9,7 @@
 
           ```kotlin
           private const val BASE_URL = "http://192.168.43.237:8000/api/"
+          ```
        - y cambia por la ip de tu maquina fisica si estas ejecutando en un dispositivo movil fisico
        - **Ejemplo:  http://<tu=ip>:8000/api/
        - manten el puerto en :8000
