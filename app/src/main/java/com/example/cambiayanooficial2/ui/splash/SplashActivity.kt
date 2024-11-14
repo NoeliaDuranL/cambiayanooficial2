@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.ui.splash
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cambiayanooficial2.ui.main.MainActivity
+import com.example.cambiayanooficial2.ui.onboarding.OnboardingActivity
+import com.example.cambiayanooficial2.R
+import com.example.cambiayanooficial2.ui.main.WelcomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

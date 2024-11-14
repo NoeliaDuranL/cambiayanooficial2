@@ -1,4 +1,6 @@
-package com.example.cambiayanooficial2.models
+package com.example.cambiayanooficial2.models.response
+
+import com.example.cambiayanooficial2.models.User
 
 data class ApiResponse(
     val success: Boolean,   // Indica si el login fue exitoso

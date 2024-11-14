@@ -1,4 +1,7 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.models.response
+
+import com.example.cambiayanooficial2.models.Producto
+import com.example.cambiayanooficial2.models.Usuario
 
 data class PostProductoResponse(
     val idPost: Int,

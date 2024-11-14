@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2.network
+package com.example.cambiayanooficial2.models.request
 
 data class RegisterRequest(
     val usuario: String,

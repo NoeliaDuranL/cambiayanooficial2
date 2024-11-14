@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
+import com.example.cambiayanooficial2.R
+import com.example.cambiayanooficial2.models.Publicacion
+import com.example.cambiayanooficial2.network.ApiClient
+import com.example.cambiayanooficial2.ui.adapter.PublicacionAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
@@ -22,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        // Obtener SharedPreferences para verificar el estado de inicio de sesión
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
         val username = sharedPref.getString("username", null)
@@ -31,43 +36,28 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
 
-
         // Inicializa el RecyclerView y el adaptador
         recyclerViewPublicaciones = findViewById(R.id.recyclerViewPublicaciones)
         recyclerViewPublicaciones.layoutManager = LinearLayoutManager(this)
 
-
-
-
         // Configurar BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
-
-        // Configurar el listener para detectar los clics en los ítems del menú
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_add_product -> {
-                    // Cuando se hace clic en el ícono de "Añadir Producto"
+                    // Navega a la actividad "Agregar Producto"
                     val intent = Intent(this, AgregarProductoActivity::class.java)
                     startActivity(intent)
                     true
                 }
-                R.id.nav_home -> {
-                    // Lógica para la opción de "Home"
-                    true
-                }
-                R.id.nav_notifications -> {
-                    // Lógica para la opción de "Notificaciones"
-                    true
-                }
-                R.id.nav_chat -> {
-                    // Lógica para la opción de "Chat"
-                    true
-                }
+                R.id.nav_home -> true
+                R.id.nav_notifications -> true
+                R.id.nav_chat -> true
                 else -> false
             }
         }
 
-        // Inicializa el adaptador con una lista vacía
+        // Inicializar el adaptador con una lista vacía
         publicacionAdapter = PublicacionAdapter(emptyList()) { publicacion ->
             iniciarChatConPublicador(publicacion)
         }
@@ -75,16 +65,13 @@ class MainActivity : AppCompatActivity() {
 
         // Llamar a la función para cargar publicaciones desde la API
         cargarPublicacionesDesdeApi()
-
-
-
     }
 
     private fun cargarPublicacionesDesdeApi() {
         lifecycleScope.launch {
             try {
-                // Llamada a la API para obtener publicaciones
-                val publicaciones = RetrofitInstance.api.getPosts()
+                // Utilizar ApiClient para obtener publicaciones de la API
+                val publicaciones = ApiClient.apiService.getPosts()
                 Log.d("MainActivity", "Publicaciones recibidas: $publicaciones")
 
                 // Actualiza el adaptador con las publicaciones recibidas
