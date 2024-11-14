@@ -17,7 +17,7 @@ y cambia por la ip de tu maquina fisica si estas ejecutando en un dispositivo mo
 **Ejemplo:  `http://<tu=ip>:8000/api/`**
 manten el puerto en :8000
 
-### Resultado ejemplo:
+### Resultado ejemplo: 
 
 ```kotlin
 private const val BASE_URL = "http://192.168.X.X:8000/api/"
@@ -25,6 +25,11 @@ private const val BASE_URL = "http://192.168.X.X:8000/api/"
 ### Para emuladores:
 
 Utiliza la IP `10.0.2.2` (que es la forma en que el emulador se conecta a tu máquina local), el puerto se mantiene
+
+#### Ejmplo si estas usando un emulador
+```kotlin
+private const val BASE_URL = "http://10.0.0.2:8000/api/"
+```
 
 **Configuración de la IP en el archivo `network_security_config.xml`**:
 
