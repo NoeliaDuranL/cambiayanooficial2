@@ -1,25 +1,25 @@
-#Proyecto CambiaYa, v1
+# Proyecto CambiaYa, v1
 
 ### Explicación del contenido:
 
 1. **Título**: APP MOVIL "CAMBIAYA"
 2. **Configuración Previa**:
 
-**Configuración de la IP en el `ApiClient`**: 
-Instrucciones para cambiar la IP del servidor en el código Kotlin de la aplicación. 
-Busca la siguiente línea:
+**Configuración de la IP en el `ApiClient.kt` ubicado en la ruta `/network/ApiClient.kt` del proyecto**: 
 
-     ```kotlin
-       private const val BASE_URL = "http://192.168.43.237:8000/api/"
-          
-     ```
+Busca la siguiente línea de codigo:
+
+```kotlin
+private const val BASE_URL = "http://192.168.43.237:8000/api/"
+```
    
 y cambia por la ip de tu maquina fisica si estas ejecutando en un dispositivo movil fisico
-**Ejemplo:  http://<tu=ip>:8000/api/**
+**Ejemplo:  `http://<tu=ip>:8000/api/`**
 manten el puerto en :8000
+
 ### Para emuladores:
 
-Utiliza la IP 10.0.2.2 (que es la forma en que el emulador se conecta a tu máquina local), el puerto se mantiene
+Utiliza la IP `10.0.2.2` (que es la forma en que el emulador se conecta a tu máquina local), el puerto se mantiene
 
 **Configuración de la IP en el archivo `network_security_config.xml`**:
 
