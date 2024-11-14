@@ -35,7 +35,11 @@ Abre el archivo y busca la siguiente línea:
 ```xml
   <domain includeSubdomains="true">192.168.43.237</domain><!-- Reemplaza con la IP de tu maquina fisica -->
 ```
+
+### Configuracion para el BACKEND:
+
 > Ejecuta tu backend de la siguiente manera:
+
 ```shell
 php artisan serve --host=0.0.0.0 --port=8000
 ```
