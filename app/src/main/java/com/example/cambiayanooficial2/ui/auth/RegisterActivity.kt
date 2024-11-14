@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2.ui
+package com.example.cambiayanooficial2.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,12 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.cambiayanooficial2.MainActivity
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.network.ApiClient
-import com.example.cambiayanooficial2.network.ApiService
-import com.example.cambiayanooficial2.network.RegisterRequest
-import com.example.cambiayanooficial2.models.RegisterResponse
+import com.example.cambiayanooficial2.models.request.RegisterRequest
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 

@@ -1,4 +1,4 @@
-package com.example.cambiayanooficial2
+package com.example.cambiayanooficial2.ui.onboarding
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.databinding.ActivityOnboardingBinding
+import com.example.cambiayanooficial2.ui.main.WelcomeActivity
 
 
 class OnboardingActivity :  AppCompatActivity(){
@@ -44,17 +46,23 @@ class OnboardingActivity :  AppCompatActivity(){
                     0 -> {
                         binding.actionText.text = getString(R.string.next)
                         binding.actionText.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
-                            AppCompatResources.getDrawable(this@OnboardingActivity, R.drawable.ic_arrow_right_double), null)
+                            AppCompatResources.getDrawable(this@OnboardingActivity,
+                                R.drawable.ic_arrow_right_double
+                            ), null)
                     }
                     1 -> {
                         binding.actionText.text = getString(R.string.next)
                         binding.actionText.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
-                            AppCompatResources.getDrawable(this@OnboardingActivity, R.drawable.ic_arrow_right_double), null)
+                            AppCompatResources.getDrawable(this@OnboardingActivity,
+                                R.drawable.ic_arrow_right_double
+                            ), null)
                     }
                     2 -> {
                         binding.actionText.text = getString(R.string.start)
                         binding.actionText.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
-                            AppCompatResources.getDrawable(this@OnboardingActivity, R.drawable.ic_arrow_rigth_single), null)
+                            AppCompatResources.getDrawable(this@OnboardingActivity,
+                                R.drawable.ic_arrow_rigth_single
+                            ), null)
 
                     }
                 }
