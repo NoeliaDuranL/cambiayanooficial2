@@ -6,10 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.cambiayanooficial2.ui.main.MainActivity
-import com.example.cambiayanooficial2.ui.onboarding.OnboardingActivity
 import com.example.cambiayanooficial2.R
-import com.example.cambiayanooficial2.ui.main.WelcomeActivity
+import com.example.cambiayanooficial2.ui.onboarding.OnboardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -24,23 +22,24 @@ class SplashActivity : AppCompatActivity() {
             val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
             // Verificar si el usuario está logueado
-            val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+            //val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
 
             // Verificar si el onboarding fue completado
-            val hasSeenOnboarding = sharedPref.getBoolean("hasSeenOnboarding", false)
-
-            val intent = if (isLoggedIn) {
-                // Si ya está logueado, ir directamente al HomeActivity
-                Intent(this, MainActivity::class.java)
-            } else {
-                if (hasSeenOnboarding) {
-                    // Si no está logueado, pero ya vio el onboarding, redirigir al Login
-                    Intent(this, WelcomeActivity::class.java)
-                } else {
-                    // Si no está logueado y no ha visto el onboarding, redirigir al OnboardingActivity
-                    Intent(this, OnboardingActivity::class.java)
-                }
-            }
+            //val hasSeenOnboarding = sharedPref.getBoolean("hasSeenOnboarding", false)
+            //Log.d("SplashActivity", "hasSeenOnboarding: $hasSeenOnboarding, isLoggedIn: $isLoggedIn")
+//            val intent = if (isLoggedIn) {
+//                // Si ya está logueado, ir directamente al HomeActivity
+//                Intent(this, MainActivity::class.java)
+//            } else {
+//                if (hasSeenOnboarding) {
+//                    // Si no está logueado, pero ya vio el onboarding, redirigir al Login
+//                    Intent(this, WelcomeActivity::class.java)
+//                } else {
+//                    // Si no está logueado y no ha visto el onboarding, redirigir al OnboardingActivity
+//                    Intent(this, OnboardingActivity::class.java)
+//                }
+//            }
+            val intent = Intent(this, OnboardingActivity::class.java)
             startActivity(intent)
             finish()  // Cierra SplashActivity
         }, 2000) // 2 segundos de retraso

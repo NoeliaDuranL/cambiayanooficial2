@@ -1,9 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Cambiayanooficial2" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Tema claro -->
+    <style name="Theme.Cambiayanooficial2.Light" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorPrimaryVariant">@color/my_light_primary_variant</item>
+        <item name="colorOnPrimary">@color/my_light_on_primary</item>
+        <item name="colorBackground">@color/my_light_background</item>
+        <item name="colorOnBackground">@color/my_light_on_background</item>
     </style>
-
-    <style name="Theme.Cambiayanooficial2" parent="Base.Theme.Cambiayanooficial2" />
 </resources>
