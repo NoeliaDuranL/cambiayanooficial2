@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" parent="Theme.AppCompat.Light.NoActionBar" >cambiayanooficial2</string>
+    <string name="onboarding_title_1">Bienvenido a la App</string>
+
+</resources>
