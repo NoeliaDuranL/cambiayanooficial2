@@ -1,7 +1,16 @@
 <resources>
+    <!-- Colores para el tema claro -->
     <color name="my_light_primary">#6200EE</color>
     <color name="my_light_primary_variant">#3700B3</color>
     <color name="my_light_on_primary">#FFFFFF</color>
-    <color name="my_light_background">#FFFFFF</color>
     <color name="my_light_on_background">#000000</color>
+
+    <!-- Colores comunes para ambos temas -->
+    <color name="my_dark_primary">#BB86FC</color>
+    <color name="my_dark_primary_variant">#D906FF</color>
+    <color name="my_dark_on_primary">#000000</color> <!-- Aquí agregamos el color para ambos temas -->
+    <color name="my_dark_on_background">#FFFFFF</color>
+    <color name="my_dark_background">#000000</color>
+
+    <color name="text_color_pink">#252525</color>
 </resources>

@@ -1,10 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Tema claro -->
-    <style name="Theme.Cambiayanooficial2.Light" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/my_light_primary</item>
-        <item name="colorPrimaryVariant">@color/my_light_primary_variant</item>
-        <item name="colorOnPrimary">@color/my_light_on_primary</item>
-        <item name="colorBackground">@color/my_light_background</item>
-        <item name="colorOnBackground">@color/my_light_on_background</item>
-    </style>
+    <!-- Tema Claro -->
+
+
 </resources>

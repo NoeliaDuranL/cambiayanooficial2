@@ -31,7 +31,22 @@ class OnboardingActivity :  AppCompatActivity(){
             R.layout.onboarding_layout_3
         )
         binding.viewPager.adapter = OnboardingAdapter(this, layouts)
+        // Configurar el "Saltar"
+        binding.skipText.setOnClickListener {
+            // Guardamos el estado del onboarding como si ya lo hubiera visto
+            val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            with(sharedPref.edit()) {
+                putBoolean("hasSeenOnboarding", true)
+                apply()
+            }
 
+            // Navegar a la actividad de bienvenida
+            //startActivity(Intent(this, WelcomeActivity::class.java))
+            //finish()  // Cerrar esta actividad
+
+            // Saltar al último slide (página 2)
+            binding.viewPager.currentItem = 2
+        }
         binding.viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
             override fun onPageScrolled(
                 position: Int,
@@ -49,6 +64,7 @@ class OnboardingActivity :  AppCompatActivity(){
                             AppCompatResources.getDrawable(this@OnboardingActivity,
                                 R.drawable.ic_arrow_right_double
                             ), null)
+                        binding.skipText.visibility = View.VISIBLE // Mostrar el "Saltar
                     }
                     1 -> {
                         binding.actionText.text = getString(R.string.next)
@@ -56,6 +72,7 @@ class OnboardingActivity :  AppCompatActivity(){
                             AppCompatResources.getDrawable(this@OnboardingActivity,
                                 R.drawable.ic_arrow_right_double
                             ), null)
+                        binding.skipText.visibility = View.VISIBLE // Mostrar el "Saltar
                     }
                     2 -> {
                         binding.actionText.text = getString(R.string.start)
@@ -63,6 +80,7 @@ class OnboardingActivity :  AppCompatActivity(){
                             AppCompatResources.getDrawable(this@OnboardingActivity,
                                 R.drawable.ic_arrow_rigth_single
                             ), null)
+                        binding.skipText.visibility = View.GONE // Ocultar el "Saltar"
 
                     }
                 }

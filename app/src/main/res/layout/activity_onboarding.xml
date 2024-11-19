@@ -11,6 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/viewPager" />
+    <!-- Botón de "Saltar" -->
+    <TextView
+        android:id="@+id/skipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saltar"
+        android:textColor="#565656"
+        android:textSize="16sp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="10dp"
+        android:background="?android:attr/selectableItemBackground"/>
     <TextView
         android:id="@+id/actionText"
         android:layout_width="wrap_content"
