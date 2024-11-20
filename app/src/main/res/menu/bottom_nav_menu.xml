@@ -11,7 +11,7 @@
     <item
         android:id="@+id/nav_add_product"
         android:icon="@drawable/ic_add"
-        android:title="Agregar Producto" />
+        android:title="Agregar" />
 
     <!-- Ítem para el icono de notificaciones -->
     <item

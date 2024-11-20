@@ -81,6 +81,9 @@ class AgregarProductoActivity : AppCompatActivity() {
                     // Aquí puedes abrir una actividad de chat
                     true
                 }
+                R.id.nav_profile->{
+                    true
+                }
                 else -> false
             }
         }
@@ -162,4 +165,15 @@ class AgregarProductoActivity : AppCompatActivity() {
         }
         return path
     }
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish() // Finaliza la actividad actual para evitar duplicados
+        super.onBackPressed() // Llama al comportamiento base del sistema
+    }
+
+
 }

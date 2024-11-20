@@ -47,11 +47,13 @@ class MainActivity : AppCompatActivity() {
                     // Navega a la actividad "Agregar Producto"
                     val intent = Intent(this, AgregarProductoActivity::class.java)
                     startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.nav_home -> true
                 R.id.nav_notifications -> true
                 R.id.nav_chat -> true
+                R.id.nav_profile -> true
                 else -> false
             }
         }
