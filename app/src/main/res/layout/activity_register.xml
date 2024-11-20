@@ -15,7 +15,7 @@
         android:background="@drawable/circle_background"
         android:padding="8dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/logo" /> <!-- Reemplaza "logo" con el nombre de tu imagen -->
+        android:src="@drawable/logo" /> <!-- Reemplaza con el nombre de tu imagen -->
 
     <!-- Contenedor principal -->
     <LinearLayout

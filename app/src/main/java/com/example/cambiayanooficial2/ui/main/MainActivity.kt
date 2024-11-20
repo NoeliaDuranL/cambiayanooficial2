@@ -1,6 +1,5 @@
 package com.example.cambiayanooficial2.ui.main
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.models.Publicacion
 import com.example.cambiayanooficial2.network.ApiClient
 import com.example.cambiayanooficial2.ui.adapter.PublicacionAdapter
+import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
@@ -27,14 +26,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Obtener SharedPreferences para verificar el estado de inicio de sesión
-        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
-        val username = sharedPref.getString("username", null)
-        val email = sharedPref.getString("email", null)
-        val fullName = sharedPref.getString("fullName", null)
-
-        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
+//        // Obtener SharedPreferences para verificar el estado de inicio de sesión
+//        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+//        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+//        val username = sharedPref.getString("username", null)
+//        val email = sharedPref.getString("email", null)
+//        val fullName = sharedPref.getString("fullName", null)
+//
+//        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
 
         // Inicializa el RecyclerView y el adaptador
         recyclerViewPublicaciones = findViewById(R.id.recyclerViewPublicaciones)

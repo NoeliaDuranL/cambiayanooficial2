@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+<!--    Colores para el login del boton y demas-->
+    <color name="purple_500">#6200EE</color>
+    <color name="google_red">#DB4437</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="red">#DB4437</color>
 </resources>
