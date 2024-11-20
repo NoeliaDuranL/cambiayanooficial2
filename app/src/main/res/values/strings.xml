@@ -9,4 +9,6 @@
     <string name="next">Siguiente</string>
     <string name="start">Iniciar</string>
     <string name="client_id">337622076823-8o6249umrp5bn079p800uf4c735i6agl.apps.googleusercontent.com</string>
+
+    <string name="user_des">Nombre de Usuario: </string>
 </resources>

@@ -90,8 +90,8 @@ class RegisterActivity : AppCompatActivity() {
         return if (username.isEmpty()) {
             usernameEditText.error = "El nombre de usuario es requerido"
             false
-        } else if (username.length < 3) {
-            usernameEditText.error = "El nombre de usuario debe tener al menos 3 caracteres"
+        } else if (username.length < 8) {
+            usernameEditText.error = "El nombre de usuario debe tener al menos 8 caracteres"
             false
         } else {
             usernameEditText.error = null // Limpiar error si es válido

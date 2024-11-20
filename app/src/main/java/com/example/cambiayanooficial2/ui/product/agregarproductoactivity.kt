@@ -16,6 +16,7 @@ import com.example.cambiayanooficial2.models.PostProductoRequest
 import com.example.cambiayanooficial2.models.response.UploadResponse
 import com.example.cambiayanooficial2.network.ApiClient
 import com.example.cambiayanooficial2.ui.main.MainActivity
+import com.example.cambiayanooficial2.ui.main.ProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -82,6 +83,9 @@ class AgregarProductoActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile->{
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    finish()
                     true
                 }
                 else -> false

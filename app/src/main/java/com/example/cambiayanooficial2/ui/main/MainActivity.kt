@@ -1,5 +1,6 @@
 package com.example.cambiayanooficial2.ui.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -26,14 +27,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        // Obtener SharedPreferences para verificar el estado de inicio de sesión
-//        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-//        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
-//        val username = sharedPref.getString("username", null)
-//        val email = sharedPref.getString("email", null)
-//        val fullName = sharedPref.getString("fullName", null)
-//
-//        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
+        // Obtener SharedPreferences para verificar el estado de inicio de sesión
+        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPref.getBoolean("isLoggedIn", false)
+        val username = sharedPref.getString("username", null)
+        val email = sharedPref.getString("email", null)
+        val fullName = sharedPref.getString("fullName", null)
+
+        Log.d("SharedPreferences", "isLoggedIn: $isLoggedIn, username: $username, email: $email, fullName: $fullName")
 
         // Inicializa el RecyclerView y el adaptador
         recyclerViewPublicaciones = findViewById(R.id.recyclerViewPublicaciones)
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        bottomNavigationView.selectedItemId = R.id.nav_home
+
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_add_product -> {
@@ -53,7 +57,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> true
                 R.id.nav_notifications -> true
                 R.id.nav_chat -> true
-                R.id.nav_profile -> true
+                R.id.nav_profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
                 else -> false
             }
         }
