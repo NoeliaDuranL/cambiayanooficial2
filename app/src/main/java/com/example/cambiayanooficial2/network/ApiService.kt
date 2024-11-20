@@ -10,6 +10,7 @@ import com.example.cambiayanooficial2.models.response.UploadResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -20,7 +21,7 @@ interface ApiService {
 
     // Endpoints para Login y Registro
     @POST("login")
-    suspend fun login(@Body requestBody: LoginRequest): ApiResponse
+    suspend fun login(@Body requestBody: LoginRequest): Response<ApiResponse>
 
     @POST("register")
     suspend fun register(@Body requestBody: RegisterRequest): RegisterResponse

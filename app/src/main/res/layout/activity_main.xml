@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Barra superior con el logo y otros elementos -->
+    <!-- Barra superior con el  y otros elementos -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:padding="8dp"
         android:background="#F5F5F5">
 
-        <!-- Imagen de perfil o logo -->
+        <!-- Imagen de perfil o -->
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="40dp"
