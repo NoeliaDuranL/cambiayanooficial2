@@ -1,101 +1,168 @@
 <!-- activity_register.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:background="#f5f5f5">
 
-    <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/circle_background"
-        android:padding="8dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo" /> <!-- Reemplaza con el nombre de tu imagen -->
 
-    <!-- Contenedor principal -->
     <LinearLayout
-        android:layout_width="303dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="16dp"
-        android:background="@drawable/container_background"
-        android:elevation="4dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registro"
-            android:textSize="24sp"
-            android:textStyle="bold"
+        <!--    Contenedor del logo-->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
-            android:layout_gravity="center" />
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            app:shapeAppearanceOverlay="@style/CircularShape" />
 
-        <!-- Campo de usuario -->
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
+        <!-- Contenedor principal -->
+        <LinearLayout
+            android:id="@+id/containerRegister"
+            android:layout_width="303dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#CCCCCC"
-            android:hint="Nombre de Usuario"
-            android:padding="10dp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:background="@drawable/container_background"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:cornerRadius="8dp"
+            android:padding="24dp">
 
-        <!-- Campo de correo electrónico -->
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#CCCCCC"
-            android:hint="Correo Electrónico"
-            android:inputType="textEmailAddress"
-            android:padding="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registro"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center" />
 
-        <!-- Campo de contraseña -->
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#CCCCCC"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="10dp" />
+            <!-- Campo de usuario -->
+            <com.google.android.material.textfield.TextInputLayout
 
-        <!-- Botón de registro -->
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:backgroundTint="#3F51B5"
-            android:text="Registrarse"
-            android:textColor="#FFFFFF" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
 
-        <!-- Botón de inicio de sesión con Google -->
-        <Button
-            android:id="@+id/google_register_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#DB4437"
-            android:text="Registrarse con Google"
-            android:textColor="#FFFFFF" />
-        <!-- TextView para ir a la pantalla de registro -->
-        <TextView
-            android:id="@+id/login_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="¿Ya tienes cuenta? Inicia sesión"
-            android:textColor="#3F51B5"
-            android:textSize="14sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#CCCCCC"
+                    android:hint="Usuario"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo de correo -->
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#CCCCCC"
+                    android:inputType="textEmailAddress"
+                    android:hint="Correo"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo de contraseña con "ojito" -->
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:endIconMode="password_toggle"> <!-- Habilitar el ojito -->
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#CCCCCC"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- TextView para mostrar errores -->
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:textColor="#DB4437"
+                android:visibility="gone" />
+
+            <!-- Botón de inicio de sesión -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Registrarse"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_login"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:backgroundTint="@color/purple_500"
+                android:textColor="#FFFFFF" />
+
+            <!-- Botón de inicio de sesión con Google -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/google_register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Registrarse con Google"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                app:backgroundTint="@color/google_red"
+                android:textColor="#FFFFFF" />
+
+            <!-- TextView para ir a la pantalla de registro -->
+            <TextView
+                android:id="@+id/login_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="¿Ya tienes cuenta? Inicia sesión"
+                android:textColor="#3F51B5"
+                android:textSize="14sp" />
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+    <!-- Fondo oscuro semi-transparente -->
+    <View
+        android:id="@+id/dark_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone" />
+
+    <!-- Indicador de carga -->
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>
