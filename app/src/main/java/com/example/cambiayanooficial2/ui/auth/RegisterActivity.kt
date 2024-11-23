@@ -23,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EditText
+    private lateinit var numberEditText: EditText  //Agregnado numero
     private lateinit var passwordEditText: EditText
     private lateinit var registerButton: Button
     private lateinit var loadingProgressBar: ProgressBar
@@ -35,6 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         // Inicialización de las vistas
         usernameEditText = findViewById(R.id.username)
         emailEditText = findViewById(R.id.email)
+        numberEditText = findViewById(R.id.number) //Numero del Usuario
         passwordEditText = findViewById(R.id.password)
         registerButton = findViewById(R.id.register_button)
         loadingProgressBar = findViewById(R.id.loading)
@@ -49,6 +51,15 @@ class RegisterActivity : AppCompatActivity() {
         usernameEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 validateUsername()
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        // Validación en tiempo real con TextWatcher
+        numberEditText.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validateNumber()
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -72,13 +83,14 @@ class RegisterActivity : AppCompatActivity() {
 
         // Registro del usuario
         registerButton.setOnClickListener {
+            val number = numberEditText.text.toString().trim()
             val username = usernameEditText.text.toString().trim()
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
             if (validateUsername() && validateEmail() && validatePassword()) {
                 // Ejecutar la llamada en segundo plano utilizando coroutines
-                registerUser(username, email, password)
+                registerUser(username, email, number, password)
             } else {
                 Toast.makeText(this, "Por favor completa todos los campos correctamente", Toast.LENGTH_SHORT).show()
             }
@@ -113,6 +125,20 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun validateNumber(): Boolean {
+        val number = usernameEditText.text.toString().trim()
+        return if (number.isEmpty()) {
+            numberEditText.error = "El telefono es requerido"
+            false
+        } else if (number.length < 8) {
+            numberEditText.error = "El telefono debe tener al menos 8 caracteres"
+            false
+        } else {
+            numberEditText.error = null // Limpiar error si es válido
+            true
+        }
+    }
+
     private fun validatePassword(): Boolean {
         val password = passwordEditText.text.toString().trim()
         return if (password.isEmpty()) {
@@ -137,10 +163,11 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun registerUser(username: String, email: String, password: String) {
+    private fun registerUser(username: String, email: String, number: String, password: String) {
         val registerRequest = RegisterRequest(
             id_persona = 1,  // Cambia a tu ID real
             usuario = username,
+            numero_celular = number,
             correo = email,
             contrasena = password
         )

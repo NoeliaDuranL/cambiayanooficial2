@@ -81,6 +81,22 @@
                     android:padding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--   Campo para NUmber-->
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#CCCCCC"
+                    android:hint="Numero Telefono"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <!-- Campo de contraseña con "ojito" -->
             <com.google.android.material.textfield.TextInputLayout
 
