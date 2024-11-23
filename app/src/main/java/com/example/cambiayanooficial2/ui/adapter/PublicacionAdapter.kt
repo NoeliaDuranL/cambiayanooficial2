@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.models.Publicacion
 
@@ -51,6 +52,7 @@ class PublicacionAdapter(
             // Cargar la imagen del producto usando Glide
             Glide.with(itemView.context)
                 .load(publicacion.producto.imagen)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(productImage)
 
             // Configurar el botón "Me Interesa"

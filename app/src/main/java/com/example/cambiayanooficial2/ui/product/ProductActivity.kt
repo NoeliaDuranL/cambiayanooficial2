@@ -6,9 +6,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cambiayanooficial2.R
@@ -34,6 +36,7 @@ class ProductActivity : AppCompatActivity() {
     private lateinit var etDescription: EditText
     private lateinit var btnSelectImage: Button
     private lateinit var btnPublishProduct: Button
+    private lateinit var progressBar: ProgressBar
 
     private var imageUri: Uri? = null
     private lateinit var storageReference: StorageReference
@@ -89,17 +92,21 @@ class ProductActivity : AppCompatActivity() {
         etDescription = findViewById(R.id.etDescription)
         btnSelectImage = findViewById(R.id.btnSelectImage)
         btnPublishProduct = findViewById(R.id.btnPublishProduct)
+        progressBar = findViewById(R.id.progressBar)
 
         btnSelectImage.setOnClickListener {
             // Abrir selector de imagen (Cámara o Galería)
             ImagePicker.with(this)
-                .crop() // Recortar imagen si es necesario
+                .crop()                    // Recortar imagen si es necesario
+                .compress(1024)             // Comprimir la imagen (se mantiene por debajo de 1 MB)
+                .maxResultSize(1080, 1080)  // Redimensionar la imagen a un máximo de 1080x1080
                 .start()
         }
 
         btnPublishProduct.setOnClickListener {
             if (imageUri != null && etProductName.text.isNotEmpty() && etDescription.text.isNotEmpty()) {
                 // Subir imagen a Firebase y luego enviar datos a la API
+                progressBar.visibility = View.VISIBLE
                 uploadImageToFirebase()
             } else {
                 Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
@@ -152,9 +159,9 @@ class ProductActivity : AppCompatActivity() {
         // Usar Retrofit para hacer la llamada POST
         apiService.postProduct(productRequest).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                progressBar.visibility = View.GONE
                 if (response.isSuccessful) {
                     Toast.makeText(this@ProductActivity, "Producto publicado", Toast.LENGTH_SHORT).show()
-
                 } else {
                     Toast.makeText(this@ProductActivity, "Error al publicar el producto", Toast.LENGTH_SHORT).show()
                 }
@@ -164,6 +171,10 @@ class ProductActivity : AppCompatActivity() {
                 Toast.makeText(this@ProductActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
             }
         })
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+        true
     }
 
     // Función para obtener el ID del usuario desde SharedPreferences

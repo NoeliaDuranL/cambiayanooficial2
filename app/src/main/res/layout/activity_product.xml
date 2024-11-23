@@ -53,6 +53,13 @@
         android:text="Publicar producto"
         android:layout_below="@id/etDescription"
         android:layout_marginTop="8dp" />
+    <!-- ProgressBar for image upload -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
 
     <!-- BottomNavigationView en la parte inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

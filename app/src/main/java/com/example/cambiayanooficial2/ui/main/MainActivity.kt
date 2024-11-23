@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_notifications -> true
                 R.id.nav_chat -> true
                 R.id.nav_profile -> {
-                    val intent = Intent(this, ProductActivity::class.java)
+                    val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
                     finish()
                     true
