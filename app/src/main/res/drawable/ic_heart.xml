@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Corazón -->
+    <path
+        android:fillColor="#FF4081"
+        android:pathData="M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5  c0-2.61,2.14-4.75,4.75-4.75c1.74,0,3.41,0.81,4.25,2.09C12.84,4.09,14.51,3.28,16.25,3.28C18.86,3.28,21,5.42,21,8.5  c0,3.78-3.4,6.86-8.55,11.54L12,21.35z"/>
+</vector>
