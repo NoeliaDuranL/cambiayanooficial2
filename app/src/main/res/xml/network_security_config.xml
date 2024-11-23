@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">192.168.100.4</domain> <!-- Reemplaza con la IP de tu servidor -->
+        <domain includeSubdomains="true">192.168.43.237</domain> <!-- Reemplaza con la IP de tu servidor -->
     </domain-config>
 </network-security-config>

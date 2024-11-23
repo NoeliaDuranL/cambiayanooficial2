@@ -2,9 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".ui.main.MyApp"
@@ -20,7 +29,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.ProfileActivity"
+            android:name=".ui.product.PruebaActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
@@ -44,8 +53,8 @@
             android:name=".ui.auth.LoginActivity"
             android:exported="false" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.product.AgregarProductoActivity" />
-
+        <activity android:name=".ui.product.ProductActivity" />
+        <activity android:name=".ui.main.ProfileActivity" />
     </application>
 
 </manifest>

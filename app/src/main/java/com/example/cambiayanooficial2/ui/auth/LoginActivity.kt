@@ -106,12 +106,14 @@ class LoginActivity : AppCompatActivity() {
         with(sharedPref.edit()) {
             putBoolean("isLoggedIn", true)
             responseBody.user?.let {
+                putInt("id", it.id_usuario) // Guarda el ID como entero
                 putString("username", it.usuario)
                 putString("email", it.correo)
                 putString("fullName", "${it.nombre} ${it.apellido}")
             }
             apply()
         }
+
     }
 
     private fun navigateToMainActivity(responseBody: ApiResponse) {

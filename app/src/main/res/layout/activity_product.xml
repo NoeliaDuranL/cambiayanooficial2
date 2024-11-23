@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.product.ProductActivity"
+    android:padding="16dp">
+
+    <!-- Nombre del producto -->
+    <EditText
+        android:id="@+id/etProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del producto"
+        android:inputType="text" />
+
+    <!-- Imagen seleccionada -->
+    <ImageView
+        android:id="@+id/ivProductImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/etProductName"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón para seleccionar la imagen -->
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar imagen"
+        android:layout_below="@id/ivProductImage"
+        android:layout_marginTop="8dp" />
+
+    <!-- Descripción del producto -->
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción del producto"
+        android:inputType="textMultiLine"
+        android:layout_below="@id/btnSelectImage"
+        android:layout_marginTop="8dp" />
+
+    <!-- Botón para publicar -->
+    <Button
+        android:id="@+id/btnPublishProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Publicar producto"
+        android:layout_below="@id/etDescription"
+        android:layout_marginTop="8dp" />
+
+    <!-- BottomNavigationView en la parte inferior -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>

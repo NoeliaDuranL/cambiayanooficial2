@@ -8,6 +8,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        maven ("https://jitpack.io")
         gradlePluginPortal()
     }
 }
@@ -16,8 +17,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven ("https://jitpack.io")
+
     }
 }
+
 
 rootProject.name = "cambiayanooficial2"
 include(":app")

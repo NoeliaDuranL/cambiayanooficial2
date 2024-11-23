@@ -1,5 +1,8 @@
 package com.example.cambiayanooficial2.models.response
 
-data class ProductResponse(val success: Boolean,
-                           val message: String,
-                           val productId: Int)
+data class ProductResponse(
+    val imagen: String,
+    val descripcion: String,
+    val nombre: String,
+    val id_producto: Int,
+)

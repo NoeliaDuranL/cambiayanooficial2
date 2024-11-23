@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.ui.auth.LoginActivity
-import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
+//import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileActivity : AppCompatActivity() {
@@ -59,9 +59,9 @@ class ProfileActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_add_product -> {
-                    val intent = Intent(this, AgregarProductoActivity::class.java)
-                    startActivity(intent)
-                    finish() // Finaliza la actividad actual para evitar apilamiento
+//                    val intent = Intent(this, AgregarProductoActivity::class.java)
+//                    startActivity(intent)
+//                    finish() // Finaliza la actividad actual para evitar apilamiento
                     true
                 }
                 R.id.nav_home -> {

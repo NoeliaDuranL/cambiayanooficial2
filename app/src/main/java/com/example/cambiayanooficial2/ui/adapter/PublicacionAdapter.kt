@@ -38,11 +38,13 @@ class PublicacionAdapter(
         private val btnMeInteresa: Button = itemView.findViewById(R.id.btnMeInteresa)
 
         fun bind(publicacion: Publicacion) {
-            // Asignar el nombre del publicador y la fecha de publicación
+            // Asignar datos del usuario
             publisherName.text = publicacion.usuario.usuario
+
+            // Asignar la fecha de publicación
             publicationDate.text = publicacion.created_at
 
-            // Asignar nombre y descripción del producto
+            // Asignar datos del producto
             productName.text = publicacion.producto.nombre
             productDescription.text = publicacion.producto.descripcion
 
@@ -56,7 +58,5 @@ class PublicacionAdapter(
                 onMeInteresaClick(publicacion)
             }
         }
-
-
     }
 }
