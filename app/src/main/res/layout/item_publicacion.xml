@@ -5,32 +5,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
     android:elevation="6dp"
-    app:cardCornerRadius="16dp"
     app:cardBackgroundColor="?attr/colorSurface"
-    android:padding="16dp"
     tools:context=".ui.product.ProductActivity">
 
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
             <!-- Nombre del Publicador y Fecha -->
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingBottom="8dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+
+                android:padding="6dp">
 
             <ImageView
                 android:id="@+id/publisherImage"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_profile"
+                android:layout_marginStart="6dp"
                 android:layout_marginEnd="10dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/circular_border"
@@ -48,14 +46,14 @@
                     android:text="Nombre del Publicador"
                     android:textStyle="bold"
                     android:textColor="?attr/colorOnSurface"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/publicationDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fecha de Publicación"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:textColor="?attr/colorOnSurfaceVariant"/>
             </LinearLayout>
         </LinearLayout>
@@ -77,10 +75,11 @@
                 android:id="@+id/productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="Nombre del Producto"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:paddingTop="8dp"/>
 
             <!-- Descripción del Producto -->
@@ -88,12 +87,13 @@
                 android:id="@+id/productDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="Descripción del Producto"
                 android:textColor="?attr/colorOnSurface"
                 android:maxLines="3"
                 android:ellipsize="end"
                 android:paddingTop="4dp"
-                android:textSize="14sp"/>
+                android:textSize="13sp"/>
 
             <!-- Botones de Acción -->
             <LinearLayout
@@ -101,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:paddingTop="8dp">
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <!-- Botón Me Interesa -->
                 <com.google.android.material.button.MaterialButton
@@ -109,13 +110,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Me Interesa"
-                    app:cornerRadius="18dp"
+
                     android:drawableEnd="@drawable/ic_heart"
                     android:textColor="?attr/colorOnPrimary"
                     android:backgroundTint="?attr/colorPrimary"
                     android:layout_marginEnd="15dp"
-                    android:paddingLeft="22dp"
-                    android:paddingRight="22dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="14sp"
                     style="@style/Widget.Material3.Button"/>
 
                 <!-- Botón de WhatsApp -->
@@ -124,14 +126,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Contactar"
-                    app:cornerRadius="18dp"
                     android:textColor="#FFFFFF"
                     android:backgroundTint="#25D366"
                     android:drawableEnd="@drawable/ic_what"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="15dp"
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="14sp"
                     style="@style/Widget.Material3.Button"/>
             </LinearLayout>
         </LinearLayout>
