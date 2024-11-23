@@ -126,7 +126,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun validateNumber(): Boolean {
-        val number = usernameEditText.text.toString().trim()
+        val number = numberEditText.text.toString().trim()
         return if (number.isEmpty()) {
             numberEditText.error = "El telefono es requerido"
             false

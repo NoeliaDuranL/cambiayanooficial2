@@ -94,7 +94,10 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CCCCCC"
                     android:hint="Numero Telefono"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:inputType="phone"
+                    android:maxLength="8"
+                    android:digits="0123456789" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo de contraseña con "ojito" -->

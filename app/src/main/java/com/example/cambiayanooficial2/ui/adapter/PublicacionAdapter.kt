@@ -1,5 +1,8 @@
 package com.example.cambiayanooficial2.ui.adapter
 
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +40,7 @@ class PublicacionAdapter(
         private val productName: TextView = itemView.findViewById(R.id.productName)
         private val productDescription: TextView = itemView.findViewById(R.id.productDescription)
         private val btnMeInteresa: Button = itemView.findViewById(R.id.btnMeInteresa)
+        private val btnContactar: Button = itemView.findViewById(R.id.btnContactar)
 
         fun bind(publicacion: Publicacion) {
             // Asignar datos del usuario
@@ -59,6 +63,20 @@ class PublicacionAdapter(
             btnMeInteresa.setOnClickListener {
                 onMeInteresaClick(publicacion)
             }
+
+            // Configurar el botón "Contactar"
+            btnContactar.setOnClickListener {
+                // Asegúrate de que el número de celular esté disponible
+                val numberUser = publicacion.usuario.numero_celular // Obtén el número de celular de la publicación
+                val phoneNumber = "+591" + numberUser // Concatenar el código de país con el número
+                val url = "https://wa.me/$phoneNumber" // Construir la URL para WhatsApp
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                itemView.context.startActivity(intent) // Iniciar la actividad de WhatsApp
+
+            }
+
+            Log.d("PublicacionAdapter", "Number: ${publicacion.usuario.numero_celular}")
+            Log.d("PublicacionAdapter", "Publicacionr: ${publicacion}")
         }
     }
 }

@@ -34,7 +34,7 @@ data class Usuario(
     val id_usuario: Int,          // ID del usuario
     val usuario: String,          // Nombre de usuario
     val correo: String,
-    val number: String,// Correo del usuario
+    val numero_celular: String, //numero del suario
     val estado: Int,              // Estado del usuario
     val created_at: String?,      // Fecha de creación del usuario
     val updated_at: String?       // Fecha de última actualización del usuario
