@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottomNavigationView.selectedItemId = R.id.nav_home
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        bottomNavigationView.selectedItemId = R.id.nav_home
 
         // Inicializar el adaptador con una lista vacía
         publicacionAdapter = PublicacionAdapter(emptyList()) { publicacion ->

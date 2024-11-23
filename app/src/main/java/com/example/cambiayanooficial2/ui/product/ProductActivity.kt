@@ -56,7 +56,7 @@ class ProductActivity : AppCompatActivity() {
 
         // Configurar BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottomNavigationView.selectedItemId = R.id.nav_add_product // Asegúrate de que `nav_add_product` sea el seleccionado inicialmente
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -86,6 +86,7 @@ class ProductActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        bottomNavigationView.selectedItemId = R.id.nav_add_product // Asegúrate de que `nav_add_product` sea el seleccionado inicialmente
 
         etProductName = findViewById(R.id.etProductName)
         ivProductImage = findViewById(R.id.ivProductImage)

@@ -1,5 +1,6 @@
 package com.example.cambiayanooficial2.ui.main
 
+//import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.ui.auth.LoginActivity
-//import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
+import com.example.cambiayanooficial2.ui.product.ProductActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileActivity : AppCompatActivity() {
@@ -52,16 +53,15 @@ class ProfileActivity : AppCompatActivity() {
             cerrarSesion() // Llamar al método para cerrar sesión
         }
 
-        // Seleccionar el item de navegación de perfil
-        bottomNavigationView.selectedItemId = R.id.nav_profile
+
 
         // Configurar el listener de navegación
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_add_product -> {
-//                    val intent = Intent(this, AgregarProductoActivity::class.java)
-//                    startActivity(intent)
-//                    finish() // Finaliza la actividad actual para evitar apilamiento
+                    val intent = Intent(this, ProductActivity::class.java)
+                    startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.nav_home -> {
@@ -79,12 +79,14 @@ class ProfileActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_profile -> {
-                    // Ya estás en ProfileActivity, no hagas nada
+
                     true
                 }
                 else -> false
             }
         }
+        // Seleccionar el item de navegación de perfil
+        bottomNavigationView.selectedItemId = R.id.nav_profile
     }
 
     // Método para cerrar sesión
