@@ -24,6 +24,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -32,11 +33,24 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-
+    private var fcmToken: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                fcmToken = task.result
+                // Aquí puedes ver el token en el log
+                Log.d("FCM Token", "Token FCM obtenido: $fcmToken")
+
+                // Si deseas, puedes enviar el token al servidor para almacenarlo
+//                sendTokenToServer(token)
+            } else {
+                Log.w("FCM Token", "Obtener token falló", task.exception)
+            }
+        }
 
 
         // Inicializar Firebase Auth

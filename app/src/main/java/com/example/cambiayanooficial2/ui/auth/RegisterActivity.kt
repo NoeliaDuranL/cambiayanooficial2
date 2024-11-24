@@ -25,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -41,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private val RC_SIGN_IN = 1001  // Código para el flujo de Google Sign-In
-
+    private var fcmToken: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -56,7 +57,18 @@ class RegisterActivity : AppCompatActivity() {
         darkOverlay = findViewById(R.id.dark_overlay)
         googleSignInButton = findViewById(R.id.google_register_button)
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                fcmToken = task.result
+                // Aquí puedes ver el token en el log
+                Log.d("FCM Token", "Token FCM obtenido: $fcmToken")
 
+                // Si deseas, puedes enviar el token al servidor para almacenarlo
+//                sendTokenToServer(token)
+            } else {
+                Log.w("FCM Token", "Obtener token falló", task.exception)
+            }
+        }
 
         auth = FirebaseAuth.getInstance()
 
@@ -159,6 +171,7 @@ class RegisterActivity : AppCompatActivity() {
                         usuario = it.displayName ?: "",
                         correo = it.email ?: "",
                         numero_celular = "",
+                        token = fcmToken,
                         contrasena = idToken,
                         id_persona = 1
                     )
@@ -281,6 +294,7 @@ class RegisterActivity : AppCompatActivity() {
             usuario = username,
             numero_celular = number,
             correo = email,
+            token = fcmToken,
             contrasena = password
         )
 

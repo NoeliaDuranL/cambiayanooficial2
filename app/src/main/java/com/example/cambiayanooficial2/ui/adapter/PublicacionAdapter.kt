@@ -43,17 +43,11 @@ class PublicacionAdapter(
         private val btnContactar: Button = itemView.findViewById(R.id.btnContactar)
 
         fun bind(publicacion: Publicacion) {
-            // Asignar datos del usuario
             publisherName.text = publicacion.usuario.usuario
-
-            // Asignar la fecha de publicación
             publicationDate.text = publicacion.created_at
-
-            // Asignar datos del producto
             productName.text = publicacion.producto.nombre
             productDescription.text = publicacion.producto.descripcion
 
-            // Cargar la imagen del producto usando Glide
             Glide.with(itemView.context)
                 .load(publicacion.producto.imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -61,22 +55,17 @@ class PublicacionAdapter(
 
             // Configurar el botón "Me Interesa"
             btnMeInteresa.setOnClickListener {
-                onMeInteresaClick(publicacion)
+                Log.d("PublicacionAdapter", "Me Interesa clicked for ${publicacion.producto.nombre}")
+                onMeInteresaClick(publicacion)  // Llamar la función cuando se hace clic
             }
-
             // Configurar el botón "Contactar"
             btnContactar.setOnClickListener {
-                // Asegúrate de que el número de celular esté disponible
-                val numberUser = publicacion.usuario.numero_celular // Obtén el número de celular de la publicación
-                val phoneNumber = "+591" + numberUser // Concatenar el código de país con el número
-                val url = "https://wa.me/$phoneNumber" // Construir la URL para WhatsApp
+                val numberUser = publicacion.usuario.numero_celular
+                val phoneNumber = "+591" + numberUser
+                val url = "https://wa.me/$phoneNumber"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                itemView.context.startActivity(intent) // Iniciar la actividad de WhatsApp
-
+                itemView.context.startActivity(intent)
             }
-
-            Log.d("PublicacionAdapter", "Number: ${publicacion.usuario.numero_celular}")
-            Log.d("PublicacionAdapter", "Publicacionr: ${publicacion}")
         }
     }
 }

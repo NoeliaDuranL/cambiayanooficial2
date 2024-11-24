@@ -30,6 +30,7 @@ firebaseAuth = "23.1.0"
 googleGmsGoogleServices = "4.4.2"
 firebaseFirestore = "25.1.1"
 compressor = "3.0.1"
+firebaseMessaging = "24.1.0"
 
 
 [libraries]
@@ -61,6 +62,7 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 compressor = { group = "id.zelory", name = "compressor", version.ref = "compressor" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
