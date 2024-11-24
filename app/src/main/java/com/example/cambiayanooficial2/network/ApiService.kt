@@ -8,12 +8,14 @@ import com.example.cambiayanooficial2.models.response.ApiResponse
 import com.example.cambiayanooficial2.models.response.PostResponse
 import com.example.cambiayanooficial2.models.response.ProductResponse
 import com.example.cambiayanooficial2.models.response.RegisterResponse
+import com.example.cambiayanooficial2.models.response.UserResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
     // Endpoint para crear un producto
@@ -24,6 +26,11 @@ interface ApiService {
     // Endpoints para Login y Registro
     @POST("login")
     suspend fun login(@Body requestBody: LoginRequest): Response<ApiResponse>
+    // Definir la función en tu interfaz de servicio de Retrofit
+
+    @POST("id_user")
+    suspend fun getUserIdByEmail(@Query("correo") email: String): Response<UserResponse>
+
 
 
     @POST("register")

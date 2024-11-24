@@ -181,11 +181,25 @@ class ProductActivity : AppCompatActivity() {
     // Función para obtener el ID del usuario desde SharedPreferences
     private fun getUserId(): Int? {
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        return sharedPref.getInt("id", -1).takeIf { it != -1 }
+
+        // Obtener el ID guardado en SharedPreferences
+        val id = sharedPref.getInt("id", -1)
+
+        // Retornar el ID si es válido, o null si no está guardado
+        return if (id != -1) id else null
     }
 
     companion object {
         private const val REQUEST_CODE_CAMERA = 101
         private const val REQUEST_CODE_GALLERY = 102
+    }
+
+    // Método para gestionar la acción de retroceso
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish() // Finaliza la actividad actual para evitar duplicados
+        super.onBackPressed() // Llama al comportamiento base del sistema
     }
 }

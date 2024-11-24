@@ -8,15 +8,22 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.databinding.ActivityLoginBinding
+import com.example.cambiayanooficial2.models.DatosUsuario
 import com.example.cambiayanooficial2.models.request.LoginRequest
 import com.example.cambiayanooficial2.models.response.ApiResponse
 import com.example.cambiayanooficial2.network.ApiClient
 import com.example.cambiayanooficial2.ui.main.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -24,11 +31,33 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        // Inicializar Firebase Auth
+        auth = FirebaseAuth.getInstance()
+
+        // Configuración de Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)) // Asegúrate de tener el Client ID en `strings.xml`
+            .requestEmail()
+            .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(this, gso)
+
+        // Botón de Google Sign-In
+        binding.googleLoginButton.setOnClickListener {
+            // Cerrar sesión de Google si ya está iniciada
+            GoogleSignIn.getClient(this, GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()).signOut()
+
+            val signInIntent = googleSignInClient.signInIntent
+            googleSignInLauncher.launch(signInIntent)
+        }
 
         binding.loginButton.setOnClickListener {
             performLogin()
@@ -38,6 +67,92 @@ class LoginActivity : AppCompatActivity() {
         binding.registerText.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+    // Actividad para manejar el resultado de la solicitud de inicio de sesión con Google
+    private val googleSignInLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                val account = task?.getResult(ApiException::class.java)
+
+                if (account != null) {
+                    firebaseAuthWithGoogle(account.idToken!!)
+                }
+            } else {
+                Toast.makeText(this, "Inicio de sesión con Google fallido", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    if (user != null) {
+                        // Obtener el correo del usuario de Google
+                        val userEmail = user.email
+
+                        // Realizar una solicitud a tu API usando el correo
+                        userEmail?.let {
+                            fetchUserIdFromApi(it) // Solicitar el ID desde la API
+                        }
+//                        val userData = DatosUsuario(
+//                            username = user.displayName,  // El nombre de usuario (Google)
+//                            email = user.email,           // El email (Google)
+//                            fullName = user.displayName,  // El nombre completo (Google)
+//                            id = null                     // No tenemos un ID de la API en este caso
+//                        )
+//                        saveUserData(userData)
+//                        navigateToMainActivity()
+                    }
+                } else {
+                    Log.w("LoginActivity", "signInWithCredential:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication Failed.", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun fetchUserIdFromApi(email: String) {
+        lifecycleScope.launch {
+            setLoading(true) // Mostrar indicador de carga
+            try {
+                // Realizar la solicitud a tu API para obtener el ID de usuario
+                val response = ApiClient.apiService.getUserIdByEmail(email)
+
+                setLoading(false) // Ocultar indicador de carga
+
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody?.success == true) {
+                        val userData = DatosUsuario(
+                            username = responseBody.usuario,
+                            email = responseBody.correo,
+                            fullName = "${responseBody.nombre} ${responseBody.apellido}",
+                            id = responseBody.id_usuario  // Usar el ID obtenido desde la API
+                        )
+                        saveUserData(userData) // Guardar los datos del usuario
+                        navigateToMainActivity() // Navegar al MainActivity
+                    } else {
+                        showError(responseBody?.message ?: "Error al obtener los datos del usuario")
+                    }
+                } else {
+                    val errorMessage = parseErrorResponse(response.errorBody()?.string())
+                    showError(errorMessage)
+                }
+            } catch (e: Exception) {
+                setLoading(false)
+                Log.e("LoginError", "Error: ${e.localizedMessage}")
+                showError("Error: ${e.localizedMessage}")
+            }
+        }
+    }
+
+
+
+    private fun navigateToMainActivity() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun hideKeyboard() {
@@ -62,14 +177,6 @@ class LoginActivity : AppCompatActivity() {
             showError("Por favor, complete todos los campos")
             return
         }
-//        if (username.length < 3) {
-//            showError("El nombre de usuario debe tener al menos 3 caracteres")
-//            retur
-//        }
-//        if (password.length < 6) {
-//            showError("La contraseña debe tener al menos 6 caracteres")
-//            return
-//        }
 
         val loginRequest = LoginRequest(usuario = username, contrasena = password)
         Log.d("LoginRequest", "Usuario: ${loginRequest.usuario}")
@@ -84,7 +191,15 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody?.success == true) {
-                        saveUserData(responseBody)
+
+                        val userData = DatosUsuario(
+                            username = responseBody.user?.usuario,
+                            email = responseBody.user?.correo,
+                            fullName = "${responseBody.user?.nombre} ${responseBody.user?.apellido}",
+                            id = responseBody.user?.id_usuario  // Usar el ID de la API
+                        )
+//                        saveUserData(responseBody)
+                        saveUserData(userData)
                         navigateToMainActivity(responseBody)
                     } else {
                         showError(responseBody?.message ?: "Datos incorrectos")
@@ -101,19 +216,38 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserData(responseBody: ApiResponse) {
+//    private fun saveUserData(responseBody: ApiResponse) {
+//        val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+//        with(sharedPref.edit()) {
+//            putBoolean("isLoggedIn", true)
+//            responseBody.user?.let {
+//                putInt("id", it.id_usuario) // Guarda el ID como entero
+//                putString("username", it.usuario)
+//                putString("email", it.correo)
+//                putString("fullName", "${it.nombre} ${it.apellido}")
+//            }
+//            apply()
+//        }
+//
+//    }
+
+    private fun saveUserData(userData: DatosUsuario) {
         val sharedPref = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         with(sharedPref.edit()) {
             putBoolean("isLoggedIn", true)
-            responseBody.user?.let {
-                putInt("id", it.id_usuario) // Guarda el ID como entero
-                putString("username", it.usuario)
-                putString("email", it.correo)
-                putString("fullName", "${it.nombre} ${it.apellido}")
+
+            // Guardar la información del usuario
+            putString("username", userData.username)
+            putString("email", userData.email)
+            //putString("fullName", userData.fullName)
+
+            // Si es un usuario que se logueó con la API, guardar el ID también
+            userData.id?.let {
+                putInt("id", it)
             }
+
             apply()
         }
-
     }
 
     private fun navigateToMainActivity(responseBody: ApiResponse) {

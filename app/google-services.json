@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "420336960927-qi0rcf9o946757fmh1fqbob430bmg0m5.apps.googleusercontent.com",
+          "client_id": "420336960927-od9bc2qbuknajl4f5et1ban1bgmuveki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cambiayanooficial2",
+            "certificate_hash": "396f95bb46f7f204cb9093da7210367b2a015fae"
+          }
+        },
+        {
+          "client_id": "420336960927-us53rebeons1ao9me7po0jjkijbjl1dg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -43,7 +51,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "420336960927-qi0rcf9o946757fmh1fqbob430bmg0m5.apps.googleusercontent.com",
+          "client_id": "420336960927-us53rebeons1ao9me7po0jjkijbjl1dg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
