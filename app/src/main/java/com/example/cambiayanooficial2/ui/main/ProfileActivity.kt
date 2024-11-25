@@ -74,10 +74,6 @@ class ProfileActivity : AppCompatActivity() {
                     // Implementar la lógica para ir a la actividad de notificaciones
                     true
                 }
-                R.id.nav_chat -> {
-                    // Implementar la lógica para ir a la actividad de chat
-                    true
-                }
                 R.id.nav_profile -> {
 
                     true

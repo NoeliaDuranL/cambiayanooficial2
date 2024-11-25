@@ -79,6 +79,12 @@ class MainActivity : AppCompatActivity() {
                     finish()
                     true
                 }
+                R.id.nav_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                finish()
+                true
+            }
                 else -> false
             }
         }

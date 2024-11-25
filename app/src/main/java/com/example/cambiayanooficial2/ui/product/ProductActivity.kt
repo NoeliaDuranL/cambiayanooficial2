@@ -74,10 +74,6 @@ class ProductActivity : AppCompatActivity() {
                     // Aquí podrías abrir la actividad de notificaciones
                     true
                 }
-                R.id.nav_chat -> {
-                    // Aquí podrías abrir la actividad de chat
-                    true
-                }
                 R.id.nav_profile -> {
                     val intent = Intent(this, ProfileActivity::class.java)
                     startActivity(intent)
@@ -87,7 +83,6 @@ class ProductActivity : AppCompatActivity() {
             }
         }
         bottomNavigationView.selectedItemId = R.id.nav_add_product // Asegúrate de que `nav_add_product` sea el seleccionado inicialmente
-
         etProductName = findViewById(R.id.etProductName)
         ivProductImage = findViewById(R.id.ivProductImage)
         etDescription = findViewById(R.id.etDescription)
