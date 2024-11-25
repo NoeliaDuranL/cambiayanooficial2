@@ -1,13 +1,22 @@
 <resources>
     <string name="app_name">CambiaYA</string>
-    <string name="onboarding_title_1">Bienvenido a la App</string>"
-    <string name="onboarding_description_1">Esta es una breve introducción\n a las características de la app.</string>
-    <string name="onboarding_title_2">Función 1</string>
-    <string name="onboarding_description_2">Aquí te mostramos cómo funciona \n la primera característica.</string>
-    <string name="onboarding_title_3">Función 2</string>
-    <string name="onboarding_description_3">La segunda función te \n permite hacer esto...</string>
+    <string name="onboarding_title_1">Bienvenido a CambiaYA</string>
+    <string name="onboarding_description_1">
+        Descubre una nueva forma de intercambiar objetos con personas cercanas.
+        Nuestra app te permite encontrar aquello que necesitas y darle una segunda vida a lo que ya no usas.
+    </string>
+    <string name="onboarding_title_2">Intercambios Fáciles y Seguros</string>
+    <string name="onboarding_description_2">
+        Publica tus objetos, explora ofertas de otros usuarios y gestiona tus intercambios de forma sencilla y segura.
+        ¡Nunca ha sido tan fácil intercambiar lo que ya no necesitas!
+    </string>
+    <string name="onboarding_title_3">Crea Conexiones</string>
+    <string name="onboarding_description_3">
+        Interactúa con otros usuarios, negocia intercambios y construye una comunidad basada en la reutilización.
+        Juntos, ayudamos al medio ambiente y reducimos el desperdicio.
+    </string>
     <string name="next">Siguiente</string>
-    <string name="start">Iniciar</string>
+    <string name="start">Comenzar</string>
     <string name="client_id">337622076823-8o6249umrp5bn079p800uf4c735i6agl.apps.googleusercontent.com</string>
 
     <string name="user_des">Nombre de Usuario: </string>
