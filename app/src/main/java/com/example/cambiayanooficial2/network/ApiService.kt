@@ -15,8 +15,10 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -55,5 +57,7 @@ interface ApiService {
     // Endpoint para enviar la notificación de "Me interesa"
     @POST("notificacion/meinteresa")
     suspend fun enviarNotificacionMeInteresa(@Body notificacionRequest: NotificationRequest): NotificationResponse
+
+
 
 }

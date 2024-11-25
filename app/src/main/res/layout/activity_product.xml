@@ -6,60 +6,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.product.ProductActivity"
-    android:padding="16dp">
 
-    <!-- Nombre del producto -->
-    <EditText
-        android:id="@+id/etProductName"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre del producto"
-        android:inputType="text" />
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:paddingLeft="55dp"
+        android:paddingEnd="55dp">
 
-    <!-- Imagen seleccionada -->
-    <ImageView
-        android:id="@+id/ivProductImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@android:drawable/ic_menu_camera"
-        android:scaleType="centerCrop"
-        android:layout_below="@id/etProductName"
-        android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/produvto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="35dp"
+            android:paddingTop="35dp"
+            android:paddingEnd="35dp"
+            android:text="Agregar producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="9dp" />
 
-    <!-- Botón para seleccionar la imagen -->
-    <Button
-        android:id="@+id/btnSelectImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar imagen"
-        android:layout_below="@id/ivProductImage"
-        android:layout_marginTop="8dp" />
+        <!-- Nombre del producto -->
+        <EditText
+            android:id="@+id/etProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre del producto"
+            android:inputType="text" />
 
-    <!-- Descripción del producto -->
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Descripción del producto"
-        android:inputType="textMultiLine"
-        android:layout_below="@id/btnSelectImage"
-        android:layout_marginTop="8dp" />
+        <!-- Imagen seleccionada -->
+        <ImageView
+            android:id="@+id/ivProductImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/etProductName"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="35dp"
+            android:paddingTop="35dp"
+            android:paddingEnd="35dp"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_camera" />
 
-    <!-- Botón para publicar -->
-    <Button
-        android:id="@+id/btnPublishProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Publicar producto"
-        android:layout_below="@id/etDescription"
-        android:layout_marginTop="8dp" />
-    <!-- ProgressBar for image upload -->
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_centerInParent="true" />
+        <!-- Botón para seleccionar la imagen -->
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivProductImage"
+            android:layout_marginTop="8dp"
+            android:text="Seleccionar imagen" />
+
+        <!-- Descripción del producto -->
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnSelectImage"
+            android:layout_marginTop="8dp"
+            android:hint="Descripción del producto"
+            android:inputType="textMultiLine" />
+
+        <!-- Botón para publicar -->
+        <Button
+            android:id="@+id/btnPublishProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etDescription"
+            android:layout_marginTop="8dp"
+            android:text="Publicar producto" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
 
     <!-- BottomNavigationView en la parte inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -67,6 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu" />
 

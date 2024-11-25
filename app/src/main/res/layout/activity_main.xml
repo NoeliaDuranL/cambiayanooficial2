@@ -40,7 +40,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/topBar"
-        android:layout_marginBottom="80dp"/>
+        android:layout_marginBottom="80dp"
+        android:paddingTop="35dp"
+        android:paddingLeft="35dp"
+        android:paddingEnd="35dp"/>
 
     <!-- Barra de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

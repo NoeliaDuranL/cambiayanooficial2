@@ -7,10 +7,43 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.NotificationActivity">
 
+
+    <TextView
+        android:id="@+id/notifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="35dp"
+        android:paddingTop="35dp"
+        android:paddingEnd="35dp"
+        android:text="Notificaciones"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="9dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notificationsRecyclerView"
+        android:layout_width="404dp"
+        android:layout_height="554dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="25dp"
+        android:paddingEnd="35dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifi"
+        app:layout_constraintVertical_bias="0.034"
+        tools:layout_editor_absoluteX="6dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notificationsRecyclerView"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_nav_menu"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

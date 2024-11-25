@@ -1,6 +1,7 @@
 package com.example.cambiayanooficial2.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.network.ApiClient
 import com.example.cambiayanooficial2.ui.adapter.NotificationAdapter
+import com.example.cambiayanooficial2.ui.product.ProductActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,6 +25,33 @@ class NotificationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.nav_add_product -> {
+                    val intent = Intent(this, ProductActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.nav_home -> true
+
+                R.id.nav_profile -> {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
 
         // Inicializamos el RecyclerView
         notificationsRecyclerView = findViewById(R.id.notificationsRecyclerView)

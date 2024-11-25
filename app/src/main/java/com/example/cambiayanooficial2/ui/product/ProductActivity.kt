@@ -17,6 +17,7 @@ import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.models.request.PostProductRequest
 import com.example.cambiayanooficial2.network.ApiClient
 import com.example.cambiayanooficial2.ui.main.MainActivity
+import com.example.cambiayanooficial2.ui.main.NotificationActivity
 import com.example.cambiayanooficial2.ui.main.ProfileActivity
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -71,7 +72,9 @@ class ProductActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_notifications -> {
-                    // Aquí podrías abrir la actividad de notificaciones
+                    val intent = Intent(this, NotificationActivity::class.java)
+                    startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.nav_profile -> {

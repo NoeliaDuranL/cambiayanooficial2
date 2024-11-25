@@ -1,20 +1,28 @@
 package com.example.cambiayanooficial2.ui.main
 
 //import com.example.cambiayanooficial2.ui.product.AgregarProductoActivity
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cambiayanooficial2.R
 import com.example.cambiayanooficial2.ui.auth.LoginActivity
 import com.example.cambiayanooficial2.ui.product.ProductActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 
 class ProfileActivity : AppCompatActivity() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -54,7 +62,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
 
-
         // Configurar el listener de navegación
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -71,7 +78,9 @@ class ProfileActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_notifications -> {
-                    // Implementar la lógica para ir a la actividad de notificaciones
+                    val intent = Intent(this, NotificationActivity::class.java)
+                    startActivity(intent)
+                    finish()
                     true
                 }
                 R.id.nav_profile -> {
@@ -113,4 +122,6 @@ class ProfileActivity : AppCompatActivity() {
         finish() // Finaliza la actividad actual para evitar duplicados
         super.onBackPressed() // Llama al comportamiento base del sistema
     }
+
+
 }
